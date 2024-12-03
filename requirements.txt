@@ -2,3 +2,5 @@ python-dotenv
 requests
 fastapi
 uvicorn
+python-telegram-bot
+pydantic
