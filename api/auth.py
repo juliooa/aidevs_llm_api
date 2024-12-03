@@ -6,8 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY_NAME = "X-API-Key"
+API_KEY_NAME = os.getenv("API_KEY_NAME")
 API_KEY = os.getenv("API_KEY")
+
+if not API_KEY_NAME:
+    raise ValueError("API_KEY_NAME must be set in .env file")
 
 if not API_KEY:
     raise ValueError("API_KEY must be set in .env file")
