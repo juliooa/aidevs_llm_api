@@ -6,7 +6,7 @@ import llm
 app = FastAPI()
 
 
-@app.post("/chat")
+@app.post("/api/chat")
 async def chat(
     request: ChatRequest,
     _=Depends(get_api_key),
