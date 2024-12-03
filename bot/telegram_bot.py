@@ -5,7 +5,7 @@ import re
 from typing import Literal
 
 from pydantic import BaseModel
-from telegram import Bot, Update
+from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
@@ -166,16 +166,6 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
             chat_id=update.effective_chat.id,
             text="Ese comando no lo conozco, puedes usar /help para ver los comandos disponibles.",
         )
-
-
-async def send_message_to_user(user_id: int, message: str):
-    bot = Bot(token=TELEGRAM_API_KEY or "")
-    try:
-        await bot.send_message(chat_id=user_id, text=message)
-        return True
-    except Exception as e:
-        print(f"Error sending message to user {user_id}: {str(e)}")
-        return False
 
 
 def start_bot():

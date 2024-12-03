@@ -1,7 +1,10 @@
+import logging
 from fastapi import FastAPI, Depends
 from api.auth import get_api_key
 from models import ChatRequest, ChatResponse
 import llm
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
@@ -11,7 +14,9 @@ async def chat(
     request: ChatRequest,
     _=Depends(get_api_key),
 ) -> ChatResponse:
+    logger.info(f"Received request: {request}")
     response = llm.chat(request.model, request.messages)
+    logger.info(f"Response: {response}")
     return response
 
 
