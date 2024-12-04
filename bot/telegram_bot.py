@@ -236,7 +236,7 @@ async def send_message(
 
 
 def get_system_message() -> Message:
-    current_date = datetime.now().strftime("%d/%m/%Y")
+    current_date = datetime.now().strftime("%d/%m/%Y %H:%M")
     system_prompt_template = Template(system_prompt)
     prompt = system_prompt_template.safe_substitute(current_date=current_date)
     return Message(role="system", content=prompt)
