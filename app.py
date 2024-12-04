@@ -1,10 +1,20 @@
 import logging
 from fastapi import FastAPI, Depends
+from fastapi.concurrency import asynccontextmanager
 from api.auth import get_api_key
 from models import ChatRequest, ChatResponse
 import llm
+from http_client import httpx_client_wrapper
 
 logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def app_startup(app: FastAPI):
+    httpx_client_wrapper.start()
+    yield
+    await httpx_client_wrapper.stop()
+
 
 app = FastAPI()
 

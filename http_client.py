@@ -5,7 +5,7 @@ class HTTPXClientWrapper:
     async_client = None
 
     def start(self):
-        self.async_client = httpx.AsyncClient(timeout=100.0)
+        self.async_client = httpx.AsyncClient(timeout=120.0)
 
     async def stop(self):
         if self.async_client is None:

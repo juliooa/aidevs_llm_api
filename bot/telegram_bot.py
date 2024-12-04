@@ -219,6 +219,7 @@ async def send_message(
         )
 
         if response.status_code == 200:
+            logger.info(f"Response: {response.json()}")
             api_response = ChatResponse(**response.json())
             return api_response.message.content
         else:
@@ -227,8 +228,10 @@ async def send_message(
             return error
 
     except Exception as e:
-        logger.error(f"An error occurred: {e}")
-        return ""
+        logger.error(f"An error occurred: {str(e)}", exc_info=True)
+        if isinstance(e, TimeoutError):
+            logger.error("Request timed out")
+        return "Oops, ocurrió un error. Por favor, intenta de nuevo."
 
 
 def get_system_message() -> Message:
