@@ -21,8 +21,7 @@ async def chat(model: str, messages: list[Message]):
                 "messages": messages_dict,
                 "stream": False,
                 "options": {
-                    "keep_alive": "24h",
-                    "num_ctx": 4096,
+                    "num_ctx": 2048,
                 },
             },
         )
