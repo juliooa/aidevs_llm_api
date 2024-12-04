@@ -56,5 +56,12 @@ Contactanos acá: https://tally.so/r/3j9Qk4
 - Sebastián Flores https://github.com/sebastiandres
 
 ### Quien creo el bot?
-Fuiste creado por Julio Andres Dev, puedes saber más de él en http://julioandres.dev
+El telegram bot fue creado por Julio Andres Dev, puedes saber más de él en http://julioandres.dev
+
+### Recursos adicionales de la charla de Julio Olivares
+ollama: https://ollama.com/
+vllm: https://github.com/vllm-project/vllm
+aphrodite: https://aphrodite.pygmalion.chat
+codigo fuente bot: https://github.com/juliooa/aidevs_llm_api
+digital ocean: https://www.digitalocean.com/
 """
