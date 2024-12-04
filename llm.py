@@ -1,5 +1,5 @@
 import logging
-from models import Message, ChatResponse
+from models import Message, ChatResponse, ResponseMessage
 from http_client import httpx_client_wrapper
 
 logger = logging.getLogger(__name__)
@@ -34,4 +34,11 @@ async def chat(model: str, messages: list[Message]):
         logger.error(f"An error occurred: {str(e)}", exc_info=True)
         if isinstance(e, TimeoutError):
             logger.error("Request timed out")
-        return "Oops, ocurrió un error. Por favor, intenta de nuevo."
+        return ChatResponse(
+            model=model,
+            done=True,
+            message=ResponseMessage(
+                role="assistant",
+                content="Oops, ocurrió un error. Por favor, intenta de nuevo.",
+            ),
+        )

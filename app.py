@@ -16,7 +16,7 @@ async def app_startup(app: FastAPI):
     await httpx_client_wrapper.stop()
 
 
-app = FastAPI()
+app = FastAPI(lifespan=app_startup)
 
 
 @app.post("/api/chat")
@@ -25,7 +25,7 @@ async def chat(
     _=Depends(get_api_key),
 ) -> ChatResponse:
     logger.info(f"Received request: {request}")
-    response = llm.chat(request.model, request.messages)
+    response = await llm.chat(request.model, request.messages)
     logger.info(f"Response: {response}")
     return response
 
