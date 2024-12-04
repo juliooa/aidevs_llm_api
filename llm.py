@@ -20,6 +20,10 @@ async def chat(model: str, messages: list[Message]):
                 "model": model,
                 "messages": messages_dict,
                 "stream": False,
+                "options": {
+                    "keep_alive": "24h",
+                    "num_ctx": 4096,
+                },
             },
         )
         logger.info(f"Response: {response}")
